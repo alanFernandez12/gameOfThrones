@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InicioActivity">
+
+
+    <ImageView
+        android:id="@+id/backIni"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/wp4984234" />
+
+    <Button
+        android:id="@+id/btnIniciar"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#81815E5E"
+        android:stateListAnimator="@anim/nav_default_enter_anim"
+        android:text="Iniciar"
+        android:textColor="#EDE6E6"
+        android:textSize="24sp"
+        app:iconTint="#C64A4A" />
+
+
+</FrameLayout>
