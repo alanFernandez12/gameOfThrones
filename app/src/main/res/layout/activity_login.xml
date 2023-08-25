@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <TextView
-        android:id="@+id/TextAmar"
+        android:id="@+id/TextAma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
@@ -37,7 +37,7 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextAmar"
+        app:layout_constraintTop_toBottomOf="@+id/TextAma"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
@@ -112,7 +112,7 @@
         android:src="@drawable/nombretransparente"
         app:layout_constraintBottom_toTopOf="@+id/EtIngreseUs"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/TextAmar"
+        app:layout_constraintStart_toEndOf="@+id/TextAma"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/amarillo"
 
