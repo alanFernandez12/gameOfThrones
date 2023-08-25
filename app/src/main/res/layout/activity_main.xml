@@ -4,11 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animationCache="false"
+    android:background="@color/cardview_shadow_end_color"
+    android:divider="@android:drawable/bottom_bar"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#7682BD"
+        android:dividerPadding="5dp"
+        android:orientation="vertical"
+        android:textAlignment="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Personajes de games of thrones."
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:typeface="sans" />
+
+
+
+    </LinearLayout>
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Escribe aquí para buscar" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:background="@color/fondo_login"
+        android:clickable="true"
+        android:clipChildren="false"
+        android:clipToPadding="true" />
 
 </LinearLayout>
