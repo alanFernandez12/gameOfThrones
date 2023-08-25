@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gris">#8C8C8C</color>
+    <color name="fondo_login">#272727</color>
+    <color name="amarillo">#DCD108</color>
 </resources>
