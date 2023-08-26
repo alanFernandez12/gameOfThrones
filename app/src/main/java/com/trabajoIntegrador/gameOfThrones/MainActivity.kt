@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView(){
         val recyclerView=findViewById<RecyclerView>(R.id.recyclerMain)
         recyclerView.layoutManager=LinearLayoutManager(this)
-        recyclerView.adapter=PersonajeAdapter(PersonajesProvider.personajeList)
+        recyclerView.adapter= PersonajeAdapter(PersonajesProvider.personajeList)
 
     }
 
