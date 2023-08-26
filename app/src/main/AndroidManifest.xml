@@ -13,9 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrabajoIntegrador"
         tools:targetApi="31">
-        <activity
-            android:name=".listaPersonajesActivity"
-            android:exported="false" />
+
 
         <activity
             android:name=".LoginActivity"
