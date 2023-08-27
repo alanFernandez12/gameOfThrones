@@ -1,10 +1,12 @@
 package com.trabajoIntegrador.gameOfThrones.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.trabajoIntegrador.gameOfThrones.Personaje
+import com.trabajoIntegrador.gameOfThrones.PersonajeActivity
 import com.trabajoIntegrador.gameOfThrones.R
 
 class PersonajeAdapter(private var personajeList:List<Personaje>, private val onClickListener:(Personaje) -> Unit) : RecyclerView.Adapter<PersonajeHolder>() {
@@ -24,6 +26,7 @@ class PersonajeAdapter(private var personajeList:List<Personaje>, private val on
         holder.render(item)
         holder.itemView.setOnClickListener {
             Toast.makeText(holder.itemView.context,item.nombre,Toast.LENGTH_SHORT).show()
+
         }
     }
     fun updatePersonaje(personajeList:List<Personaje>){

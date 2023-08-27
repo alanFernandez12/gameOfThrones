@@ -1,4 +1,5 @@
 package com.trabajoIntegrador.gameOfThrones
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -55,7 +56,9 @@ class MainActivity : AppCompatActivity() {
 
     fun onItemSelected(personaje: Personaje) {
         Toast.makeText(this, personaje.nombre, Toast.LENGTH_SHORT).show()
-
+        val intentPersonaje= Intent(this,PersonajeActivity::class.java)
+        intentPersonaje.putExtra("NOMBRE", personaje.nombre)
+        startActivity(intentPersonaje)
     }
 
 }
