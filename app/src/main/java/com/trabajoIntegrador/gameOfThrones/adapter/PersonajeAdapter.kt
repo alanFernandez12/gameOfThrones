@@ -12,6 +12,7 @@ class PersonajeAdapter(private var personajeList:List<Personaje>, private val on
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonajeHolder {
         val layaoutInFlater= LayoutInflater.from(parent.context)
         return PersonajeHolder(layaoutInFlater.inflate(R.layout.item_personaje,parent,false))
+
     }
 
     override fun getItemCount(): Int {

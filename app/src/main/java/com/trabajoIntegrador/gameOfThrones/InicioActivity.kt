@@ -13,8 +13,8 @@ class InicioActivity : AppCompatActivity() {
         btnIniciar= findViewById(R.id.btnIniciar)
 
         btnIniciar.setOnClickListener {
-            var intentMainActivity= Intent(this, MainActivity::class.java)
-            startActivity(intentMainActivity)
+            var intentLoginActivity= Intent(this, LoginActivity::class.java)
+            startActivity(intentLoginActivity)
 
             finish()
         }

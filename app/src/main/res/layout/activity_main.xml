@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@android:color/system_accent1_900"
+        android:background="@color/car_ui_rotary_focus_stroke_secondary_color"
         android:dividerPadding="5dp"
         android:orientation="vertical">
 
@@ -27,7 +27,6 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:typeface="sans" />
-
 
     </LinearLayout>
 
@@ -49,6 +48,7 @@
         android:clickable="true"
         android:clipChildren="false"
         android:clipToPadding="true" />
+
 
 
 </LinearLayout>

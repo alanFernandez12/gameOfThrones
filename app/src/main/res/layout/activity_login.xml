@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <TextView
-        android:id="@+id/TextAmar"
+        android:id="@+id/textAmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
@@ -26,7 +26,7 @@
         />
 
     <EditText
-        android:id="@+id/EtIngreseUs"
+        android:id="@+id/etIngreseUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -37,11 +37,11 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextAmar"
+        app:layout_constraintTop_toBottomOf="@+id/textAmar"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/EtContraseña"
+        android:id="@+id/etContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -52,28 +52,26 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EtIngreseUs"
+        app:layout_constraintTop_toBottomOf="@+id/etIngreseUs"
 
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-
-        android:id="@+id/BtnIniciar"
+        android:id="@+id/btnIniciar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="32dp"
-        android:background="@drawable/button_config"
         android:text="Iniciar Sesion"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EtContraseña"
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/etContraseña" />
 
     <Button
-        android:id="@+id/BtnReg"
+        android:id="@+id/btnReg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
@@ -83,36 +81,37 @@
         android:text="Registrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BtnIniciar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciar" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/EtIngreseUs"
+        app:layout_constraintEnd_toStartOf="@+id/etIngreseUs"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintVertical_bias="0.19" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:src="@drawable/baseline_password_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/EtContraseña"
+        app:layout_constraintEnd_toStartOf="@+id/etContraseña"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.27" />
 
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:backgroundTint="@color/black"
         android:src="@drawable/nombretransparente"
-        app:layout_constraintBottom_toTopOf="@+id/EtIngreseUs"
+        app:layout_constraintBottom_toTopOf="@+id/etIngreseUs"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/TextAmar"
+        app:layout_constraintStart_toEndOf="@+id/textAmar"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/amarillo"
 
@@ -125,7 +124,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BtnReg"
+        app:layout_constraintTop_toBottomOf="@+id/btnReg"
         app:layout_constraintVertical_bias="0.2"
 
         />
