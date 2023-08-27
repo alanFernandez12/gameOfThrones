@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/car_ui_rotary_focus_stroke_secondary_color"
+        android:background="@color/fondo_login"
         android:dividerPadding="5dp"
         android:orientation="vertical">
 
@@ -24,7 +24,7 @@
             android:text="Personajes de games of thrones."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@color/white"
+            android:textColor="#FFC107"
             android:textSize="22sp"
             android:typeface="sans" />
 
