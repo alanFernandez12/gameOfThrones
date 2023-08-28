@@ -31,9 +31,7 @@ class RegistrarUserActivity : AppCompatActivity() {
             // Perform registration logic here
             registrarUsuario(username, email, password)
 
-            val intentMainActivity= Intent(this,MainActivity::class.java)
-            startActivity(intentMainActivity)
-            finish()
+
         }
     }
 
@@ -50,6 +48,9 @@ class RegistrarUserActivity : AppCompatActivity() {
                 val message = "Registration successful for $username"
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 usuarioRegistrado = true;
+                val intentMainActivity= Intent(this,MainActivity::class.java)
+                startActivity(intentMainActivity)
+                finish()
             }
             else{
                 Toast.makeText(this,"Campos vacios",Toast.LENGTH_SHORT).show()

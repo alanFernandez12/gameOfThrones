@@ -71,7 +71,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContraseña" />
+        app:layout_constraintTop_toBottomOf="@+id/etContraseña"/>
 
     <Button
         android:id="@+id/btnReg"
@@ -84,13 +84,13 @@
         android:text="Registrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnIniciar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciar"/>/>
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
 
-        android:tint="@color/amarillo"
+        android:tint="@color/black"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/etIngreseUs"
@@ -102,7 +102,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:tint="@color/amarillo"
+        android:tint="@color/black"
         android:src="@drawable/baseline_password_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/etContraseña"
