@@ -14,9 +14,8 @@ class PersonajeActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val bundle : Bundle? = intent.extras // datos extras que envie a esta activity
-        
         super.onCreate(savedInstanceState)
+        val bundle : Bundle? = intent.extras // datos extras que envie a esta activity
         setContentView(R.layout.activity_personaje)
         val nomPer = bundle?.getString("Nombre") // obtengo los datos extras
 

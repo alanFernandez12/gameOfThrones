@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,13 +9,12 @@
     android:background="@drawable/border">
 
 
-
     <ImageView
         android:id="@+id/IvPersonaje"
         android:layout_width="150dp"
         android:layout_height="150dp"
         tools:background="@color/black"
-        android:padding="2dp"/>
+        android:padding="2dp" />
 
     <!-- Columna 1 -->
 
@@ -36,28 +34,28 @@
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="Nombre:"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="Apellido:"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="Famlia:"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="Titutlo:"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -74,29 +72,30 @@
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="Daenerys"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/apellidoPer"
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="Targaryen"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
+
         <TextView
             android:id="@+id/familiaPer"
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="House Targaryen"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
+
         <TextView
             android:id="@+id/tituloPer"
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="Madre de dragones"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>
