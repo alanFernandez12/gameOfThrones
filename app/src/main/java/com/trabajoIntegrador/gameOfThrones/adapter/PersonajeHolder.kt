@@ -10,7 +10,7 @@ import com.trabajoIntegrador.gameOfThrones.databinding.ItemPersonajeBinding
 
 
 class PersonajeHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+    //push
     val binding = ItemPersonajeBinding.bind(view)
 
 
