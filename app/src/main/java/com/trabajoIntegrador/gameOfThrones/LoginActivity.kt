@@ -3,6 +3,7 @@ package com.trabajoIntegrador.gameOfThrones
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -24,7 +25,10 @@ class LoginActivity : AppCompatActivity() {
 
 
         btnReg.setOnClickListener{
-            //FaltaActividad registro
+        //FaltaActividad registro
+            Log.i("depurar", "Ingresando a Registrar Usuario")
+            //var intentRegistrarUsuario=Intent(this,RegistrarUsuario::class.java)
+            //startActivity(intentRegistrarUsuario)
         }
 
         btnIniciar.setOnClickListener{
