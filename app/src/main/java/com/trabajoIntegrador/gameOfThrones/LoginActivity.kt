@@ -24,13 +24,12 @@ class LoginActivity : AppCompatActivity() {
 
 
         btnReg.setOnClickListener{
-            var intentRegistrarUsuario=Intent(this,RegistrarUsuario::class.java)
-            startActivity(intentRegistrarUsuario)
+            //FaltaActividad registro
         }
 
         btnIniciar.setOnClickListener{
 
-            if(etUsuario.text.toString().isEmpty() || etContr.text.toString().isEmpty())
+            if(etUsuario.text.isEmpty() || etContr.toString().isEmpty())
                 Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show()
             else{
                 var intentMainActivity=Intent(this,MainActivity::class.java)
