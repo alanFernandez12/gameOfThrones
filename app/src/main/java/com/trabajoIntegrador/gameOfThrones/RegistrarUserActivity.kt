@@ -1,10 +1,10 @@
 package com.trabajoIntegrador.gameOfThrones
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class RegistrarUserActivity : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class RegistrarUserActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnRegister: Button
-
+    private final var usuarioRegistrado: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrar_usuario)
@@ -36,8 +36,16 @@ class RegistrarUserActivity : AppCompatActivity() {
         // Implement your registration logic here
         // You can make network requests, validate input fields, etc.
 
-        // For this example, let's just display a toast message
-        val message = "Registration successful for $username"
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        if (usuarioRegistrado)
+        Toast.makeText(this, "${username} ya registrado en sistema", Toast.LENGTH_SHORT).show()
+        else
+        {
+            if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+                // For this example, let's just display a toast message
+                val message = "Registration successful for $username"
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                usuarioRegistrado = true;
+            }
+        }
     }
 }
