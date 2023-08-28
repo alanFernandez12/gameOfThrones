@@ -25,6 +25,7 @@
 
         />
 
+
     <EditText
         android:id="@+id/etIngreseUs"
         android:layout_width="match_parent"
@@ -89,7 +90,8 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@color/black"
+
+        android:tint="@color/amarillo"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/etIngreseUs"
@@ -101,7 +103,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@color/black"
+        android:tint="@color/amarillo"
         android:src="@drawable/baseline_password_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/etContraseña"

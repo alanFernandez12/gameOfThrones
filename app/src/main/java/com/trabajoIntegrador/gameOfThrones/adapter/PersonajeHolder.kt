@@ -1,25 +1,28 @@
 package com.trabajoIntegrador.gameOfThrones.adapter
 
 import android.view.View
-
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.trabajoIntegrador.gameOfThrones.Personaje
-
-import com.trabajoIntegrador.gameOfThrones.databinding.ItemPersonajeBinding
-
+import com.trabajoIntegrador.gameOfThrones.R
 
 class PersonajeHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    val binding= ItemPersonajeBinding.bind(view)
+    val nombre= view.findViewById<TextView>(R.id.nombrePer)
+    val apellido= view.findViewById<TextView>(R.id.apellidoPer)
+    val familia= view.findViewById<TextView>(R.id.familiaPer)
+    val titulo= view.findViewById<TextView>(R.id.tituloPer)
+    val imagen=view.findViewById<ImageView>(R.id.IvPersonaje)
 
+    fun render(personajeModel:Personaje) {
+        nombre.text = personajeModel.nombre
+        apellido.text = personajeModel.apellido
+        familia.text = personajeModel.familia
+        titulo.text = personajeModel.titulo
 
-
-    fun render(personajeModel:Personaje){
-        binding.nombrePer.text=personajeModel.nombre
-        binding.apellidoPer.text=personajeModel.apellido
-        binding.familiaPer.text=personajeModel.familia
-        binding.tituloPer.text=personajeModel.titulo
-        Glide.with(binding.IvPersonaje.context).load(personajeModel.imagen).into(binding.IvPersonaje)
+        Glide.with(imagen.context).load(personajeModel.imagen).into(imagen)
     }
+
 }
