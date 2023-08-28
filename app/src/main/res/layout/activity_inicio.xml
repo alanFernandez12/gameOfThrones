@@ -11,20 +11,20 @@
     <ImageView
         android:id="@+id/backIni"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/wp4984234" />
 
     <Button
         android:id="@+id/btnIniciar"
         style="@style/Widget.Material3.Button"
-        android:layout_width="125dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#81815E5E"
+        android:layout_gravity="center|clip_vertical"
+        android:backgroundTint="#BC393632"
         android:stateListAnimator="@anim/nav_default_enter_anim"
         android:text="Iniciar"
         android:textColor="#EDE6E6"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:iconTint="#C64A4A" />
 
 

@@ -3,7 +3,6 @@ package com.trabajoIntegrador.gameOfThrones
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 
 class InicioActivity : AppCompatActivity() {
@@ -13,11 +12,10 @@ class InicioActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inicio)
         btnIniciar= findViewById(R.id.btnIniciar)
 
-        Log.i("cicloDeVida", "Inicio OnCreate" )
-
         btnIniciar.setOnClickListener {
-            val intentMainActivity= Intent(this, MainActivity::class.java)
-            startActivity(intentMainActivity)
+            var intentLoginActivity= Intent(this, LoginActivity::class.java)
+            startActivity(intentLoginActivity)
+
             finish()
         }
     }

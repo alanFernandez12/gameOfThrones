@@ -13,40 +13,42 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="#7682BD"
+        android:layout_height="60dp"
+        android:background="@color/fondo_login"
         android:dividerPadding="5dp"
-        android:orientation="vertical"
-        android:textAlignment="center">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:text="Personajes de games of thrones."
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#FFC107"
+            android:textSize="22sp"
             android:typeface="sans" />
-
-
 
     </LinearLayout>
 
-    <SearchView
+    <EditText
+        android:id="@+id/scFilter"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Escribe aquí para buscar" />
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
+        android:hint="Buscar..."/>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fondo_login"
+        android:background="@drawable/car_ui_app_styled_view_background"
         android:clickable="true"
         android:clipChildren="false"
         android:clipToPadding="true" />
+
+
 
 </LinearLayout>
