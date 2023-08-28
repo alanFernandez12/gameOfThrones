@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         btnIniciar.setOnClickListener{
 
-            if(etUsuario.toString().isEmpty() || etContr.toString().isEmpty())
+            if(etUsuario.text.isEmpty() || etContr.toString().isEmpty())
                 Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show()
             else{
                 var intentMainActivity=Intent(this,MainActivity::class.java)
