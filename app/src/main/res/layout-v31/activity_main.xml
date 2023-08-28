@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animationCache="false"
-    android:background="@color/white"
+    android:background="@android:color/system_accent1_50"
     android:divider="@android:drawable/bottom_bar"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -37,17 +38,19 @@
         android:maxLines="1"
         android:singleLine="true"
         android:imeOptions="actionDone"
-        android:hint="Buscar..." />
+        android:hint="Buscar..."/>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/car_ui_app_styled_view_background"
         android:clickable="true"
         android:clipChildren="false"
         android:clipToPadding="true"
-        android:layout_margin="6dp"/>
+        android:layout_margin="4dp"/>
+
 
 
 </LinearLayout>
