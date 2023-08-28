@@ -27,8 +27,8 @@ class LoginActivity : AppCompatActivity() {
         btnReg.setOnClickListener{
         //FaltaActividad registro
             Log.i("depurar", "Ingresando a Registrar Usuario")
-            //var intentRegistrarUsuario=Intent(this,RegistrarUsuario::class.java)
-            //startActivity(intentRegistrarUsuario)
+            var intentRegistrarUserActivity=Intent(this,RegistrarUserActivity::class.java)
+            startActivity(intentRegistrarUserActivity)
         }
 
         btnIniciar.setOnClickListener{

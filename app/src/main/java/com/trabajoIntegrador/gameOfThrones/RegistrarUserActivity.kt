@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 
-class RegistrarUsuario : AppCompatActivity() {
+class RegistrarUserActivity : AppCompatActivity() {
 
     private lateinit var etUsername: EditText
     private lateinit var etEmail: EditText

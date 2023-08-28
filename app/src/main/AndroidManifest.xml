@@ -18,6 +18,9 @@
             android:name=".PersonajeActivity"
             android:exported="false" />
         <activity
+            android:name=".RegistrarUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity

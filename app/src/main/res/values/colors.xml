@@ -5,4 +5,5 @@
     <color name="gris">#8C8C8C</color>
     <color name="fondo_login">#272727</color>
     <color name="amarillo">#DCD108</color>
+    <color name="hintForAmarillo">#A69F5A</color>
 </resources>
