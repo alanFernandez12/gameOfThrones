@@ -11,15 +11,15 @@ import com.trabajoIntegrador.gameOfThrones.databinding.ItemPersonajeBinding
 
 class PersonajeHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    val binding= ItemPersonajeBinding.bind(view)
+    val binding = ItemPersonajeBinding.bind(view)
 
 
-
-    fun render(personajeModel:Personaje){
-        binding.nombrePer.text=personajeModel.nombre
-        binding.apellidoPer.text=personajeModel.apellido
-        binding.familiaPer.text=personajeModel.familia
-        binding.tituloPer.text=personajeModel.titulo
-        Glide.with(binding.IvPersonaje.context).load(personajeModel.imagen).into(binding.IvPersonaje)
+    fun render(personajeModel: Personaje) {
+        binding.nombrePer.text = personajeModel.nombre
+        binding.apellidoPer.text = personajeModel.apellido
+        binding.familiaPer.text = personajeModel.familia
+        binding.tituloPer.text = personajeModel.titulo
+        Glide.with(binding.IvPersonaje.context).load(personajeModel.imagen)
+            .into(binding.IvPersonaje)
     }
 }

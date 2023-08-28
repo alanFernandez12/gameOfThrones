@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".RegistrarUserActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro de Usuario"
+            android:textColor="@color/amarillo"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="81dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/nombretransparente"
+            app:tint="@color/amarillo" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nombre de Usuario"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:singleLine="true"
+        android:textColor="@color/amarillo"
+        android:textColorHint="@color/hintForAmarillo" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="tu Email"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:textColor="@color/amarillo"
+        android:textColorHint="@color/hintForAmarillo" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="nueva contraseña"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:maxLines="1"
+        android:textColor="@color/amarillo"
+        android:textColorHint="@color/hintForAmarillo" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Registrar Usurio" />
+    <ImageView
+        android:layout_width="266dp"
+        android:layout_height="284dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReg"
+        app:layout_constraintVertical_bias="0.2"
+
+        />
+
+</LinearLayout>
