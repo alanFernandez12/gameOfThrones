@@ -5,29 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="5dp"
-    android:layout_margin="@dimen/cardview_compat_inset_shadow"
-    android:background="@drawable/border">
+    android:background="@android:drawable/alert_light_frame"
+    android:gravity="center">
 
-
-
-    <ImageView
-        android:id="@+id/IvPersonaje"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        tools:background="@color/black"
-        android:padding="2dp"/>
 
     <!-- Columna 1 -->
 
     <!-- Columna 2 -->
 
 
+    <ImageView
+        android:id="@+id/IvPersonaje"
+        android:layout_width="150dp"
+        android:layout_height="148dp"
+        tools:background="@color/black" />
+
     <LinearLayout
-        android:layout_width="1dp"
-        android:layout_height="150dp"
-        android:layout_weight="0.5"
-        android:orientation="vertical">
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:gravity="center">
 
 
         <!-- Elementos en la columna 1 -->
@@ -62,19 +60,20 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
         android:orientation="vertical">
 
 
         <!-- Elementos en la columna 2 -->
+
         <TextView
             android:id="@+id/nombrePer"
             android:layout_width="wrap_content"
             android:layout_height="37.5dp"
             android:text="Daenerys"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/apellidoPer"
