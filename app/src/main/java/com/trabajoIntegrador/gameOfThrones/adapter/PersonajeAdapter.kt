@@ -27,6 +27,10 @@ class PersonajeAdapter(private var personajeList:List<Personaje>, private val on
         holder.itemView.setOnClickListener {
             Toast.makeText(holder.itemView.context,item.nombre,Toast.LENGTH_SHORT).show()
 
+            val intentPersonaje= Intent(holder.itemView.context,PersonajeActivity::class.java)
+            intentPersonaje.putExtra("NOMBRE", item.nombre)
+            holder.itemView.context.startActivity(intentPersonaje)
+
         }
     }
     fun updatePersonaje(personajeList:List<Personaje>){

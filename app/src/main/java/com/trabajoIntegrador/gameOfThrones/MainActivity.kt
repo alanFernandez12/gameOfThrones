@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onItemSelected(personaje: Personaje) {
-        Toast.makeText(this, personaje.nombre, Toast.LENGTH_SHORT).show()
+       // Toast.makeText(this, personaje.nombre, Toast.LENGTH_SHORT).show()
         val intentPersonaje= Intent(this,PersonajeActivity::class.java)
         intentPersonaje.putExtra("NOMBRE", personaje.nombre)
         startActivity(intentPersonaje)
