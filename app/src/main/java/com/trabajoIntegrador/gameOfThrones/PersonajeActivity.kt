@@ -14,8 +14,9 @@ class PersonajeActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         val bundle : Bundle? = intent.extras // datos extras que envie a esta activity
+
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personaje)
         val nomPer = bundle?.getString("Nombre") // obtengo los datos extras
 
@@ -24,7 +25,7 @@ class PersonajeActivity : AppCompatActivity() {
             val image = personajels[i].imagen
             im = findViewById(R.id.IvPersonaje)
 
-            Glide.with(im.context).load(image).into(im)
+            Glide.with(im.context).load(image).into(im)// cargo la irl de la foto
 
         }
     }
