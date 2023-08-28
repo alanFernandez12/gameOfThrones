@@ -16,7 +16,7 @@ class InicioActivity : AppCompatActivity() {
             var intentLoginActivity = Intent(this, LoginActivity::class.java)
             startActivity(intentLoginActivity)
 
-            finish()
+
         }
     }
 }

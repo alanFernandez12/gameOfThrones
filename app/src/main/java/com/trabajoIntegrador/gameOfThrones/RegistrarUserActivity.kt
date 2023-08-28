@@ -1,5 +1,6 @@
 package com.trabajoIntegrador.gameOfThrones
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -29,6 +30,10 @@ class RegistrarUserActivity : AppCompatActivity() {
 
             // Perform registration logic here
             registrarUsuario(username, email, password)
+
+            val intentMainActivity= Intent(this,MainActivity::class.java)
+            startActivity(intentMainActivity)
+            finish()
         }
     }
 
@@ -45,6 +50,9 @@ class RegistrarUserActivity : AppCompatActivity() {
                 val message = "Registration successful for $username"
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 usuarioRegistrado = true;
+            }
+            else{
+                Toast.makeText(this,"Campos vacios",Toast.LENGTH_SHORT).show()
             }
         }
     }
