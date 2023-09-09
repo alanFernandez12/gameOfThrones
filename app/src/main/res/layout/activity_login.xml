@@ -34,6 +34,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginRight="50dp"
         android:hint=" Usuario"
+        android:imeOptions="actionDone"
         android:maxLines="1"
         android:singleLine="true"
         android:textColor="@color/black"
@@ -50,6 +51,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="60dp"
         android:hint=" Contraseña"
+        android:imeOptions="actionDone"
         android:lines="@android:integer/config_longAnimTime"
         android:maxLines="1"
         android:singleLine="true"
@@ -89,7 +91,6 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-
         android:tint="@color/black"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"

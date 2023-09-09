@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         btnIniciar.setOnClickListener{
 
             //por ahora si los campos estan vacío va dar un mensaje y no se podra acceder la vista main
-            if(etUsuario.text.isEmpty() || etContr.toString().isEmpty())
+            if(etUsuario.text.isEmpty() || etContr.text.isEmpty())
                 Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show()
             else{
                 //iniciando la actividad pasando la validacion
