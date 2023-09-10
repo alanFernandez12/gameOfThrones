@@ -9,12 +9,12 @@ import android.widget.EditText
 import android.widget.Toast
 
 class LoginActivity : AppCompatActivity() {
-    ////// --- Elementos de la vista //////
+
     lateinit var btnIniciar: Button
     lateinit var  etUsuario: EditText
     lateinit var etContr:EditText
     lateinit var btnReg:Button
-    //////////////////////////////////////
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
