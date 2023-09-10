@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 
@@ -14,6 +15,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var  etUsuario: EditText
     lateinit var etContr:EditText
     lateinit var btnReg:Button
+    lateinit var cbRecordarUsuario:CheckBox
     //////////////////////////////////////
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +27,16 @@ class LoginActivity : AppCompatActivity() {
         etUsuario=findViewById(R.id.etIngreseUs)
         etContr=findViewById(R.id.etContraseña)
         btnReg=findViewById(R.id.btnReg)
+        cbRecordarUsuario = findViewById(R.id.cbRecordarUsuario)
 
 
+        var preferencias = getSharedPreferences(resources.getString((R.string.sp_credenciales)), MODE_PRIVATE)
+        var usuarioGuardado = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
+        var passwordGuardado = preferencias.getString(resources.getString(R.string.password_usuario), "")
+
+        if(usuarioGuardado!= "" && passwordGuardado!= ""){
+            startMainActivity(usuarioGuardado!!)
+        }
         //accion al presionar el boton registrar
         btnReg.setOnClickListener{
         //FaltaActividad registro
@@ -43,6 +53,14 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show()
             else{
                 //iniciando la actividad pasando la validacion
+                if(cbRecordarUsuario.isChecked)
+                {
+                    val editar = preferencias.edit()
+                    editar.putString(resources.getString(R.string.nombre_usuario),etUsuario.text.toString())
+                    editar.putString(resources.getString(R.string.password_usuario),etContr.text.toString())
+                    editar.apply()
+                }
+
                 var intentMainActivity=Intent(this,MainActivity::class.java)
                 startActivity(intentMainActivity)
 
@@ -50,4 +68,15 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun startMainActivity(usuarioGuardado: String) {
+            // Indicamos a que pantalla queremos ir
+            val intentMain = Intent(this, MainActivity::class.java)
+            // Agregamos datos que queremos pasar a la proxima pantalla
+            intentMain.putExtra(resources.getString(R.string.nombre_usuario), usuarioGuardado)
+            // Cambiamos de pantalla
+            startActivity(intentMain)
+            // Eliminamos la Activity actual para sacarla de la Pila
+            finish()
+        }
 }
