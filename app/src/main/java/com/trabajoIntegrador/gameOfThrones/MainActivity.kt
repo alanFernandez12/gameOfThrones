@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId== R.id.item_listado){
+        if(item.itemId== R.id.item_cerrarSesion){
 
         }
         return super.onOptionsItemSelected(item)
