@@ -1,7 +1,9 @@
 package com.trabajoIntegrador.gameOfThrones
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -79,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.item_cerrarSesion) {
+
             var preferencias = getSharedPreferences(resources.getString((R.string.sp_credenciales)), MODE_PRIVATE)
             preferencias.edit().putString(resources.getString(R.string.nombre_usuario), "").apply()
             preferencias.edit().putString(resources.getString(R.string.password_usuario), "").apply()
@@ -95,6 +98,14 @@ class MainActivity : AppCompatActivity() {
             var intentHouse= Intent(this,HouseActivity::class.java)
             startActivity(intentHouse)
             finish()
+
+            val preferencias =
+                getSharedPreferences(resources.getString((R.string.sp_credenciales)), MODE_PRIVATE)
+            val editar = preferencias.edit()
+            editar.putString(resources.getString(R.string.nombre_usuario), "")
+            editar.putString(resources.getString(R.string.password_usuario), "")
+            editar.apply()
+
         }
         return super.onOptionsItemSelected(item)
     }
