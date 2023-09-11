@@ -7,6 +7,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.trabajoIntegrador.gameOfThrones.datos.AppDatabase
 
 class LoginActivity : AppCompatActivity() {
     ////// --- Elementos de la vista //////
@@ -40,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
             preferencias.getString(resources.getString(R.string.password_usuario), "")
 
         // si existen datos guardados del usuario accedemos al sistema sin pedir contraseña
-        if (usuarioGuardado != "" && passwordGuardado != "") {
+        if (usuarioGuardado != "") {
             startMainActivity(usuarioGuardado!!)
         }
         //accion al presionar el boton registrar
@@ -68,8 +69,8 @@ class LoginActivity : AppCompatActivity() {
             usuario = etUsuario.text.toString()
             password = etContr.text.toString()
 
-            if (usuario.isEmpty() || password.isEmpty())
-                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+            if (usuario.isEmpty())
+                Toast.makeText(this, "ingrese usuario", Toast.LENGTH_SHORT).show()
             else {
                 // previamente buscamos en la base de datos si existe información del usuario
                 val bdd = AppDatabase.getDatabase(this)
