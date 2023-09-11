@@ -13,8 +13,7 @@ class RegistrarUserActivity : AppCompatActivity() {
     lateinit var etEmail: EditText
     lateinit var etPassword: EditText
     lateinit var btnRegister: Button
-    var usuarioRegistrado: Boolean = false
-    lateinit var usuario :String
+    lateinit var usuario: String
     lateinit var password: String
     lateinit var email: String
 
@@ -27,7 +26,7 @@ class RegistrarUserActivity : AppCompatActivity() {
         btnRegister = findViewById(R.id.btnRegister)
 
 // obtener datos recibidos desde la vista previa
-        var bundle: Bundle? = intent.extras
+        val bundle: Bundle? = intent.extras
         // Reviso que efectivamente tenga datos
         if (bundle != null) {
             // Obtengo los datos especifico
@@ -37,37 +36,40 @@ class RegistrarUserActivity : AppCompatActivity() {
             etUsername.setText(usuario)
             etPassword.setText(password)
         }
-            btnRegister.setOnClickListener {
-                usuario = etUsername.text.toString()
-                email = etEmail.text.toString()
-                password = etPassword.text.toString()
+        btnRegister.setOnClickListener {
+            usuario = etUsername.text.toString()
+            email = etEmail.text.toString()
+            password = etPassword.text.toString()
 
-                // Perform registration logic here
-                registrarUsuario(usuario, email, password)
+            // Perform registration logic here
+            registrarUsuario(usuario, email, password)
 
 
-            }
         }
+    }
 
-        private fun registrarUsuario(usuario:String, email: String, password: String) {
-            // Implement your registration logic here
-            // You can make network requests, validate input fields, etc.
+    private fun registrarUsuario(usuario: String, email: String, password: String) {
+        if (usuario.isEmpty() || email.isEmpty() || password.isEmpty())
+            Toast.makeText(this, "Campos vacios", Toast.LENGTH_SHORT).show()
+        else {
+            // previamente buscamos en la base de datos si existe información del usuario
+            val bdd = AppDatabase.getDatabase(this)
+            val checkUsuario = bdd.usuarioDao.getNombre(usuario)
 
-            if (usuarioRegistrado)
-                Toast.makeText(this, "${usuario} ya registrado en sistema", Toast.LENGTH_SHORT)
+            if (checkUsuario == null) {    // si no existe lo agregamos
+                val newUsuario = Usuario(nombre = usuario, contr = password, email = email)
+                bdd.usuarioDao.insertUsuario(newUsuario)
+                Toast.makeText(
+                    this,
+                    "${usuario} registrado con exito en sistema",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
-            else {
-                if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                    // For this example, let's just display a toast message
-                    val message = "Registration successful for $username"
-                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                    usuarioRegistrado = true
-                    val intentMainActivity = Intent(this, LoginActivity::class.java)
-                    startActivity(intentMainActivity)
-                    finish()
-                } else {
-                    Toast.makeText(this, "Campos vacios", Toast.LENGTH_SHORT).show()
-                }
+                val intentMainActivity = Intent(this, LoginActivity::class.java)
+                startActivity(intentMainActivity)
+                finish()
             }
         }
     }
+
+}

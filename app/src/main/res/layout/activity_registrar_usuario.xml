@@ -15,7 +15,6 @@
         android:gravity="center">
 
 
-
         <ImageView
             android:layout_width="0dp"
             android:layout_height="81dp"
@@ -35,7 +34,7 @@
         android:minHeight="48dp"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textColorHint="@color/gris"/>
+        android:textColorHint="@color/gris" />
 
     <EditText
         android:id="@+id/etEmail"
