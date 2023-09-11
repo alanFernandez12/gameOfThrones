@@ -15,6 +15,12 @@
         android:theme="@style/Theme.TrabajoIntegrador"
         tools:targetApi="31">
         <activity
+            android:name=".HouseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BooksActivity"
+            android:exported="false" />
+        <activity
             android:name=".PersonajeActivity"
             android:exported="false" />
         <activity
@@ -34,7 +40,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
