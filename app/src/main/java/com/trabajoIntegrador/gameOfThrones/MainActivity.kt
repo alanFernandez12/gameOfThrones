@@ -1,8 +1,8 @@
 package com.trabajoIntegrador.gameOfThrones
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trabajoIntegrador.gameOfThrones.adapter.PersonajeAdapter
@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var adapter: PersonajeAdapter
+
     ///////////////////////////////
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +28,13 @@ class MainActivity : AppCompatActivity() {
 
         //filtrado de personajes por sus atributos
         binding.scFilter.addTextChangedListener { userFilter ->
-            val searchText= userFilter.toString().lowercase()
+            val searchText = userFilter.toString().lowercase()
 
             val personajeFiltrado = personajeMutableList.filter { personaje ->
-                    personaje.nombre.lowercase().contains(searchText) ||
-                    personaje.apellido.lowercase().contains(searchText) ||
-                    personaje.familia.lowercase().contains(searchText) ||
-                    personaje.titulo.lowercase().contains(searchText)
+                personaje.nombre.lowercase().contains(searchText) ||
+                        personaje.apellido.lowercase().contains(searchText) ||
+                        personaje.familia.lowercase().contains(searchText) ||
+                        personaje.titulo.lowercase().contains(searchText)
 
             }
 

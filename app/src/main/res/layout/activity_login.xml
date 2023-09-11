@@ -119,7 +119,6 @@
         app:tint="@color/black" />
 
     <ImageView
-        android:id="@+id/ivL"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:backgroundTint="@color/black"
