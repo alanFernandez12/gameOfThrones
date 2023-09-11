@@ -76,18 +76,24 @@ class LoginActivity : AppCompatActivity() {
                 val checkUsuario = bdd.usuarioDao.getNombre(usuario)
                 if (checkUsuario == null)
                     Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
-                else {
-                    //iniciando la actividad pasando la validacion
-                    if (cbRecordarUsuario.isChecked) {
-                        val editar = preferencias.edit()
-                        editar.putString(resources.getString(R.string.nombre_usuario), usuario)
-                        editar.putString(resources.getString(R.string.password_usuario), password)
-                        editar.apply()
-                    }
-                    val intentMainActivity = Intent(this, MainActivity::class.java)
-                    startActivity(intentMainActivity)
+                else
+                    if (!checkUsuario.contr.equals(password))
+                        Toast.makeText(this, "contraseña incorrecta", Toast.LENGTH_SHORT).show()
+                    else {
+                        //iniciando la actividad pasando la validacion
+                        if (cbRecordarUsuario.isChecked) {
+                            val editar = preferencias.edit()
+                            editar.putString(resources.getString(R.string.nombre_usuario), usuario)
+                            editar.putString(
+                                resources.getString(R.string.password_usuario),
+                                password
+                            )
+                            editar.apply()
+                        }
+                        val intentMainActivity = Intent(this, MainActivity::class.java)
+                        startActivity(intentMainActivity)
 
-                }
+                    }
             }
         }
     }
