@@ -12,7 +12,9 @@
             android:id="@+id/ivHouse"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            tools:background="@color/black"/>
+            tools:background="@color/black"
+            android:layout_marginHorizontal="16dp"
+            android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
