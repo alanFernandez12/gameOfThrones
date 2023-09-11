@@ -6,17 +6,32 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.trabajoIntegrador.gameOfThrones.adapterHouse.HouseAdapter
 
 class HouseActivity : AppCompatActivity() {
     lateinit var toolbar: Toolbar
+    private lateinit var rvHouse:RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //HouseProvider.houseAtributeList
         setContentView(R.layout.activity_house)
+
+        initRecyclerView()
 
         toolbar = findViewById(R.id.toolbarHouse)
         setSupportActionBar(toolbar)
         supportActionBar!!.title=resources.getString(R.string.titulo)
+
     }
+
+    private fun initRecyclerView(){
+        val recyclerView = findViewById<RecyclerView>(R.id.rvHouse)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = HouseAdapter(HouseProvider.houseAtributeList)
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_house, menu)

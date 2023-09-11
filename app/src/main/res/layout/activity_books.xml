@@ -4,11 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BooksActivity">
+    android:orientation="vertical"
+    tools:context=".BooksActivity"
+   >
 
     <include
         android:id="@+id/toolbarBooks"
         layout="@layout/toolbar_layout"
         />
+
 
 </LinearLayout>
