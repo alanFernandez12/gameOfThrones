@@ -1,10 +1,10 @@
 package com.trabajoIntegrador.gameOfThrones
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,16 +30,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        
         //filtrado de personajes por sus atributos
         binding.scFilter.addTextChangedListener { userFilter ->
-            val searchText= userFilter.toString().lowercase()
+            val searchText = userFilter.toString().lowercase()
 
             val personajeFiltrado = personajeMutableList.filter { personaje ->
-                    personaje.nombre.lowercase().contains(searchText) ||
-                    personaje.apellido.lowercase().contains(searchText) ||
-                    personaje.familia.lowercase().contains(searchText) ||
-                    personaje.titulo.lowercase().contains(searchText)
+                personaje.nombre.lowercase().contains(searchText) ||
+                        personaje.apellido.lowercase().contains(searchText) ||
+                        personaje.familia.lowercase().contains(searchText) ||
+                        personaje.titulo.lowercase().contains(searchText)
 
             }
 
@@ -49,9 +48,9 @@ class MainActivity : AppCompatActivity() {
         initRecyclerView()
 
         //toolbar
-        toolbar= findViewById(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.title= resources.getString(R.string.titulo)
+        supportActionBar!!.title = resources.getString(R.string.titulo)
 
     }
 
@@ -72,13 +71,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main,menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId== R.id.item_cerrarSesion){
-
+        if (item.itemId == R.id.item_cerrarSesion) {
+            val preferencias =
+                getSharedPreferences(resources.getString((R.string.sp_credenciales)), MODE_PRIVATE)
+            val editar = preferencias.edit()
+            editar.putString(resources.getString(R.string.nombre_usuario), "")
+            editar.putString(resources.getString(R.string.password_usuario), "")
+            editar.apply()
         }
         return super.onOptionsItemSelected(item)
     }

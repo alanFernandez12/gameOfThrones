@@ -9,7 +9,6 @@
 
 
     <ImageView
-        android:id="@+id/backIni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/wp4984234" />
