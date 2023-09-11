@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.trabajoIntegrador.gameOfThrones.datos.AppDatabase
+import com.trabajoIntegrador.gameOfThrones.datos.Usuario
 
 class RegistrarUserActivity : AppCompatActivity() {
 
@@ -41,7 +43,7 @@ class RegistrarUserActivity : AppCompatActivity() {
             email = etEmail.text.toString()
             password = etPassword.text.toString()
 
-            // Perform registration logic here
+            // Realizar logica de registro
             registrarUsuario(usuario, email, password)
 
 
@@ -49,7 +51,7 @@ class RegistrarUserActivity : AppCompatActivity() {
     }
 
     private fun registrarUsuario(usuario: String, email: String, password: String) {
-        if (usuario.isEmpty() || email.isEmpty() || password.isEmpty())
+        if (usuario.isEmpty() || email.isEmpty())
             Toast.makeText(this, "Campos vacios", Toast.LENGTH_SHORT).show()
         else {
             // previamente buscamos en la base de datos si existe información del usuario
@@ -57,8 +59,8 @@ class RegistrarUserActivity : AppCompatActivity() {
             val checkUsuario = bdd.usuarioDao.getNombre(usuario)
 
             if (checkUsuario == null) {    // si no existe lo agregamos
-                val newUsuario = Usuario(nombre = usuario, contr = password, email = email)
-                bdd.usuarioDao.insertUsuario(newUsuario)
+                val nuevoUsuario = Usuario(nombre = usuario, contr = password, email = email)
+                bdd.usuarioDao.insertUsuario(nuevoUsuario)
                 Toast.makeText(
                     this,
                     "${usuario} registrado con exito en sistema",

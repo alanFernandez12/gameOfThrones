@@ -1,4 +1,4 @@
-package com.trabajoIntegrador.gameOfThrones
+package com.trabajoIntegrador.gameOfThrones.datos
 
 import android.content.Context
 import androidx.room.Database

@@ -1,4 +1,4 @@
-package com.trabajoIntegrador.gameOfThrones
+package com.trabajoIntegrador.gameOfThrones.datos
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
