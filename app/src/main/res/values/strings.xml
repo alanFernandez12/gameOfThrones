@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">trabajoIntegrador</string>
+    <string name="title_activity_iniciando">IniciandoActivity</string>
     <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Khalesi">Khalesi</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -38,6 +45,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_inicio">InicioActivity</string>
     <string name="nombre_usuario">NOMBRE</string>
     <string name="password_usuario">PASSWORD</string>
     <string name="sp_credenciales">SP_CREDENCIALES</string>
