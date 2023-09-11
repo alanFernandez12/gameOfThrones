@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".LoginActivity">
+    tools:context="LoginActivity">
 
     <TextView
         android:id="@+id/textAmar"
@@ -21,9 +21,7 @@
         app:layout_constraintHorizontal_bias="0.001"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
-
-        />
+        app:layout_constraintVertical_bias="0.05"/>
 
 
     <EditText
@@ -52,6 +50,7 @@
         android:layout_marginRight="60dp"
         android:hint=" Contraseña"
         android:imeOptions="actionDone"
+        android:inputType="textPassword"
         android:lines="@android:integer/config_longAnimTime"
         android:maxLines="1"
         android:singleLine="true"
@@ -59,58 +58,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etIngreseUs"
-        tools:ignore="TouchTargetSizeCheck"
-        android:inputType="textPassword"/>
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <CheckBox
+        android:id="@+id/cbRecordarUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:text="Recordar Usuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etContraseña" />
 
     <Button
         android:id="@+id/btnIniciar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="30dp"
         android:layout_marginRight="32dp"
         android:text="Iniciar Sesion"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContraseña"/>
+        app:layout_constraintTop_toBottomOf="@id/cbRecordarUsuario" />
 
     <Button
         android:id="@+id/btnReg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="32dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:text="Registrarse"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnIniciar"/>/>
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciar" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:tint="@color/black"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/etIngreseUs"
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195" />
+        app:layout_constraintVertical_bias="0.195"
+        app:tint="@color/black" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:tint="@color/black"
         android:src="@drawable/baseline_password_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/etContraseña"
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.288" />
+        app:layout_constraintVertical_bias="0.288"
+        app:tint="@color/black" />
 
     <ImageView
         android:id="@+id/ivL"
@@ -132,10 +138,10 @@
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnReg"
-        app:layout_constraintVertical_bias="0.2"
 
-        />
+        app:layout_constraintVertical_bias="0.529" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

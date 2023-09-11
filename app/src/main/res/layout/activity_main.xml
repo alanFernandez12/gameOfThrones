@@ -29,10 +29,10 @@
         android:id="@+id/recyclerMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="6dp"
         android:clickable="true"
         android:clipChildren="false"
-        android:clipToPadding="true"
-        android:layout_margin="6dp"/>
+        android:clipToPadding="true" />
 
 
 </LinearLayout>
