@@ -2,7 +2,10 @@ package com.trabajoIntegrador.gameOfThrones
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trabajoIntegrador.gameOfThrones.adapter.PersonajeAdapter
@@ -10,7 +13,7 @@ import com.trabajoIntegrador.gameOfThrones.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    /////////////
+    lateinit var toolbar: Toolbar
     private lateinit var binding: ActivityMainBinding // simplificando el llamado a la vista
 
     private var personajeMutableList: MutableList<Personaje> =
@@ -18,13 +21,16 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var adapter: PersonajeAdapter
-    ///////////////////////////////
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //// rutinar para poder usar el binding e iniciar el layaout
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
+
+        
         //filtrado de personajes por sus atributos
         binding.scFilter.addTextChangedListener { userFilter ->
             val searchText= userFilter.toString().lowercase()
@@ -42,6 +48,10 @@ class MainActivity : AppCompatActivity() {
 
         initRecyclerView()
 
+        //toolbar
+        toolbar= findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title= resources.getString(R.string.titulo)
 
     }
 
@@ -59,6 +69,18 @@ class MainActivity : AppCompatActivity() {
     fun onItemSelected(personaje: Personaje) {
         Toast.makeText(this, personaje.nombre, Toast.LENGTH_SHORT).show()
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId== R.id.item_cerrarSesion){
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
