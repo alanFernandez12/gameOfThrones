@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.trabajoIntegrador.gameOfThrones.adapterHouse.HouseAdapter
 
 class HouseActivity : AppCompatActivity() {
+
     lateinit var toolbar: Toolbar
     private lateinit var rvHouse:RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
