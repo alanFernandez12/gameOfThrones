@@ -12,11 +12,11 @@
         android:id="@+id/item_houseB"
         android:title="Casas"
         app:showAsAction="never"
-        android:icon="@drawable/baseline_density_medium_24"/>
+        android:icon="@drawable/baseline_density_medium_24" />
 
     <item
         android:id="@+id/item_cerrarSesionB"
         android:title="Cerrar sesion"
         app:showAsAction="never"
-        android:icon="@drawable/baseline_density_medium_24"/>
+        android:icon="@drawable/baseline_density_medium_24" />
 </menu>

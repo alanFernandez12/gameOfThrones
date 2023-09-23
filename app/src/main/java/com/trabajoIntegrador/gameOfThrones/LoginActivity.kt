@@ -91,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                             )
                             editar.apply()
                         }
+
                         val intentMainActivity = Intent(this, MainActivity::class.java)
                         startActivity(intentMainActivity)
 

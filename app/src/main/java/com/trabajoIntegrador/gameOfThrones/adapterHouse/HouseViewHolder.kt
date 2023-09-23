@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.trabajoIntegrador.gameOfThrones.HouseAtribute
 import com.trabajoIntegrador.gameOfThrones.R
 
-class HouseViewHolder(view:View):ViewHolder(view) {
+class HouseViewHolder(view: View) : ViewHolder(view) {
 
     val nombreHouse = view.findViewById<TextView>(R.id.tvNombreHouse)
     val descripcionHouse = view.findViewById<TextView>(R.id.tvDescripcionHouse)
@@ -15,7 +15,7 @@ class HouseViewHolder(view:View):ViewHolder(view) {
 
     val photo = view.findViewById<ImageView>(R.id.ivHouse)
 
-    fun render(HouseAtribute : HouseAtribute) {
+    fun render(HouseAtribute: HouseAtribute) {
         nombreHouse.text = HouseAtribute.nombre
         descripcionHouse.text = HouseAtribute.descripcion
         lemaHouse.text = HouseAtribute.lema

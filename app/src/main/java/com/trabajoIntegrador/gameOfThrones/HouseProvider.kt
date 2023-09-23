@@ -1,7 +1,7 @@
 package com.trabajoIntegrador.gameOfThrones
 
 class HouseProvider {
-    companion object{
+    companion object {
         val houseAtributeList = listOf<HouseAtribute>(
 
             HouseAtribute(
