@@ -67,7 +67,7 @@ class RegistrarUserActivity : AppCompatActivity() {
                 startActivity(intentMainActivity)
                 finish()
             } else
-                msgToast("$usuario ya existe en sistema: ${checkUsuario}")
+                msgToast("$usuario ya existe en sistema: $checkUsuario")
         }
     }
 
