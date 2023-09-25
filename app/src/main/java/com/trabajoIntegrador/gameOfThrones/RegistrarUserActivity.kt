@@ -7,12 +7,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.trabajoIntegrador.gameOfThrones.datos.AppDatabase
 import com.trabajoIntegrador.gameOfThrones.datos.Usuario
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.runBlocking
 
 class RegistrarUserActivity : AppCompatActivity() {
 
@@ -36,7 +34,7 @@ class RegistrarUserActivity : AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         // Reviso que efectivamente tenga datos
         if (bundle != null) {
-            // Obtengo los datos especifico
+            // Obtengo los datos especificos
             usuario = bundle.getString(resources.getString(R.string.nombre_usuario)).toString()
             password = bundle.getString(resources.getString(R.string.password_usuario)).toString()
             // los paso a los cajas de texto
@@ -57,56 +55,59 @@ class RegistrarUserActivity : AppCompatActivity() {
 
     private fun registrarUsuario(usuario: String, email: String, password: String) {
         if (usuario.isEmpty() || email.isEmpty())
-            Toast.makeText(this, "Campos vacios", Toast.LENGTH_SHORT).show()
+            msgToast("Campos Vacios")
         else {
-            // previamente buscamos en la base de datos si existe información del usuario
+            /* si usuario no existe en base de datos lo agregamos */
             val usuarioDB = Usuario(nombre = usuario, contr = password, email = email)
-            val checkUsuario = ejecutarQueryDatabaseCorrutina(usuarioDB, 1) // 1 consulta
-            Log.i("corrutina", "Validar si existe " + checkUsuario.toString() + " " + 1)
-            if (checkUsuario == false) {    // si no existe lo agregamos
-                ejecutarQueryDatabaseCorrutina(usuarioDB, 2) // 2 inserta
-                Log.i(
-                    "corrutina",
-                    "si existe añadir a la tabla " + checkUsuario.toString() + " " + 2
-                )
-                Toast.makeText(this, "$usuario registrado con exito en sistema", Toast.LENGTH_SHORT)
-                    .show()
+            val checkUsuario = runQryDbaseCorrutina(usuarioDB)
+            if (checkUsuario == null) {    // usuario registrado con exito
+                msgLog("si no existe añadir a la tabla $usuarioDB 2")
+                msgToast("$usuario registrado con exito en sistema")
                 val intentMainActivity = Intent(this, LoginActivity::class.java)
                 startActivity(intentMainActivity)
                 finish()
             } else
-                Toast.makeText(
-                    this,
-                    "$usuario ya existe en sistema: ${usuarioDB.nombre}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                msgToast("$usuario ya existe en sistema: ${checkUsuario}")
         }
-
     }
 
-    private fun ejecutarQueryDatabaseCorrutina(usuarioDB: Usuario, oper: Int): Boolean? {
-        var checkUser: Usuario? = null;
+    private fun msgToast(msj: String) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show()
+    }
 
-        lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                val bdd = AppDatabase.getDatabase(this@RegistrarUserActivity)
-                if (oper == 1)
-                    checkUser = bdd.usuarioDao.getNombre(usuarioDB.nombre)
-                else
-                    bdd.usuarioDao.insertUsuario(usuarioDB)
-            }
-            Log.i("corrutina", "linea 95" + checkUser.toString() + " " + oper)
+    private fun msgLog(msj: String) {
+        Log.i("msgLog", msj)
+    }
+
+
+    private fun runQryDbaseCorrutina(usuarioDB: Usuario): Usuario? {
+        var checkUser: Usuario?
+        runBlocking(Dispatchers.IO) {
+            checkUser = registerUser(usuarioDB)
         }
 
-        Toast.makeText(
-            this@RegistrarUserActivity,
-            "Ejecucion withcontext: $checkUser",
-            Toast.LENGTH_LONG
-        ).show()
-        Log.i(
-            "corrutina",
-            "linea 103" + checkUser.toString() + " " + usuarioDB.toString() + " " + oper
-        )
-        return (checkUser?.equals(usuarioDB))
+        /* si se utiliza lifecycle... se necesita "dormir" el hilo para asegurar
+        * que se actualice checkUser
+        lifecycleScope.launch(Dispatchers.IO) {
+            checkUser = registerUser(usuarioDB)
+        }
+        Thread.sleep(100)
+        msgToast("usuario: " + checkUser)
+        */
+
+        return checkUser
+    }
+
+    private fun registerUser(user: Usuario): Usuario {
+        // 1. chequear si el usuario ya existe en base de datos
+        val bdd = AppDatabase.getDatabase(this@RegistrarUserActivity)
+        val existingUser = bdd.usuarioDao.getNombre(user.nombre)
+
+        // 2. si el usuario no existe proceder con la insercion
+        if (existingUser == null)
+            bdd.usuarioDao.insertUsuario(user)
+        return existingUser
     }
 }
+
+
