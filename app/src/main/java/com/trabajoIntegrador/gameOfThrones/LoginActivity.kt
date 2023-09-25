@@ -8,6 +8,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.trabajoIntegrador.gameOfThrones.datos.AppDatabase
+import com.trabajoIntegrador.gameOfThrones.datos.Usuario
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 
 class LoginActivity : AppCompatActivity() {
     ////// --- Elementos de la vista //////
@@ -73,8 +76,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "ingrese usuario", Toast.LENGTH_SHORT).show()
             else {
                 // previamente buscamos en la base de datos si existe información del usuario
-                val bdd = AppDatabase.getDatabase(this)
-                val checkUsuario = bdd.usuarioDao.getNombre(usuario)
+                val checkUsuario = runQryDbaseCorrutina(usuario)
                 if (checkUsuario == null)
                     Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
                 else
@@ -109,5 +111,19 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intentMain)
         // Eliminamos la Activity actual para sacarla de la Pila
         finish()
+    }
+
+    private fun runQryDbaseCorrutina(usuarioDB: String): Usuario? {
+        var checkUser: Usuario?
+        runBlocking(Dispatchers.IO) {
+            checkUser = registrarIngreso(usuarioDB)
+        }
+        return checkUser
+    }
+
+    private fun registrarIngreso(user: String): Usuario {
+        // 1. chequear si el usuario ya existe en base de datos
+        val bdd = AppDatabase.getDatabase(this@LoginActivity)
+        return bdd.usuarioDao.getNombre(user)
     }
 }
