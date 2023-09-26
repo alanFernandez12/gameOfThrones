@@ -44,7 +44,9 @@ class LoginActivity : AppCompatActivity() {
             preferencias.getString(resources.getString(R.string.password_usuario), "")
 
         // si existen datos guardados del usuario accedemos al sistema sin pedir contraseña
+        Toast.makeText(this, "Usuario guardado: " + usuarioGuardado, Toast.LENGTH_SHORT).show()
         if (usuarioGuardado != "") {
+            Toast.makeText(this, "Usuario guardado: " + usuarioGuardado, Toast.LENGTH_SHORT).show()
             startMainActivity(usuarioGuardado!!)
         }
         //accion al presionar el boton registrar
@@ -92,6 +94,7 @@ class LoginActivity : AppCompatActivity() {
                                 password
                             )
                             editar.apply()
+                            Toast.makeText(this, "recordar Usuario: "+ preferencias.getString(resources.getString(R.string.nombre_usuario), ""), Toast.LENGTH_SHORT).show()
                         }
 
                         val intentMainActivity = Intent(this, MainActivity::class.java)
