@@ -1,9 +1,12 @@
 package com.trabajoIntegrador.gameOfThrones
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class Personaje(
-    val nombre: String,
-    val apellido: String,
-    val familia: String,
-    val titulo: String,
-    val imagen: String
+    val firstName: String,
+    val lastName: String,
+    val family: String,
+    val title: String,
+    val imageUrl: String
 )

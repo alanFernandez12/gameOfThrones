@@ -29,10 +29,10 @@ class PersonajeAdapter(
         holder.render(item)
         val activity = holder.itemView.context
         holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, item.nombre, Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context, item.firstName, Toast.LENGTH_SHORT).show()
 
             val intentPersonaje = Intent(it.context, PersonajeActivity::class.java)
-            intentPersonaje.putExtra("Nombre", item.nombre.toString())
+            intentPersonaje.putExtra("Nombre", item.firstName.toString())
             activity.startActivity(intentPersonaje)
 
         }

@@ -15,11 +15,11 @@ class PersonajeHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
     fun render(personajeModel: Personaje) {
-        binding.nombrePer.text = personajeModel.nombre
-        binding.apellidoPer.text = personajeModel.apellido
-        binding.familiaPer.text = personajeModel.familia
-        binding.tituloPer.text = personajeModel.titulo
-        Glide.with(binding.IvPersonaje.context).load(personajeModel.imagen)
+        binding.nombrePer.text = personajeModel.firstName
+        binding.apellidoPer.text = personajeModel.lastName
+        binding.familiaPer.text = personajeModel.family
+        binding.tituloPer.text = personajeModel.title
+        Glide.with(binding.IvPersonaje.context).load(personajeModel.imageUrl)
             .into(binding.IvPersonaje)
     }
 }
