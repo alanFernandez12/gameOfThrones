@@ -1,4 +1,4 @@
-package com.trabajoIntegrador.gameOfThrones
+package com.trabajoIntegrador.gameOfThrones.datos
 
 import android.content.Context
 import androidx.room.Database
@@ -14,35 +14,17 @@ abstract class AppDatabase : RoomDatabase() {
 
         private var INSTANCIA: AppDatabase? = null
 
-        /*
-                   fun getDatabase(contexto: Context) : AppDatabase{
-                        if(INSTANCIA == null){
-                            synchronized(this){
-                                INSTANCIA = Room.databaseBuilder(
-                                    contexto, AppDatabase::class.java, "base_app_usuarios")
-                                    //.allowMainThreadQueries()
-                                    //.fallbackToDestructiveMigration()
-                                    .build()
-                            }
-                        }
-                        return INSTANCIA!!
-                    }
-
-         */
         fun getDatabase(contexto: Context): AppDatabase {
             synchronized(this) {
                 var instancia = INSTANCIA
                 if (instancia == null) {
                     instancia = Room.databaseBuilder(
                         contexto, AppDatabase::class.java, "base_app_usuarios"
-                    ).allowMainThreadQueries().build()
+                    ).build()
                     INSTANCIA = instancia
                 }
                 return instancia
             }
-
         }
-
-
     }
 }

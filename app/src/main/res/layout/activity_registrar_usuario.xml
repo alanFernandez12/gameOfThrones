@@ -20,6 +20,7 @@
             android:layout_height="81dp"
             android:layout_weight="1"
             android:backgroundTint="@color/black"
+            android:contentDescription="@string/logoGOT"
             android:src="@drawable/nombretransparente"
             app:tint="@color/amarillo" />
 
@@ -71,6 +72,7 @@
         android:layout_height="284dp"
         android:src="@drawable/logo"
         android:layout_gravity="center"
+        android:contentDescription="@string/logoGOT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
