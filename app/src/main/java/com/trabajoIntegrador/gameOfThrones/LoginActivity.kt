@@ -1,6 +1,9 @@
 package com.trabajoIntegrador.gameOfThrones
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -21,9 +24,18 @@ class LoginActivity : AppCompatActivity() {
     lateinit var cbRecordarUsuario: CheckBox
     //////////////////////////////////////
 
+    ////// --- elementos para configurar las notificaciones //////
+    private val NOTIFICATION_ID = 12345
+    private val CHANNEL_ID = ""
+    private val notifyCount = 0
+    private var myNotifyMgr: NotificationManager? = null
+    ////////
+
     ////// --- Elementos del entorno de ejecucion //////
     lateinit var usuario: String
     lateinit var password: String
+    ////////
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -42,6 +54,10 @@ class LoginActivity : AppCompatActivity() {
             preferencias.getString(resources.getString(R.string.nombre_usuario), "")
         val passwordGuardado =
             preferencias.getString(resources.getString(R.string.password_usuario), "")
+
+        // añadimos el servicio de notificaciones
+        val myNotifyMgr = crearNotificationManager()
+
 
         // si existen datos guardados del usuario accedemos al sistema sin pedir contraseña
         Toast.makeText(this, "Usuario guardado: " + usuarioGuardado, Toast.LENGTH_SHORT).show()
@@ -128,5 +144,16 @@ class LoginActivity : AppCompatActivity() {
         // 1. chequear si el usuario ya existe en base de datos
         val bdd = AppDatabase.getDatabase(this@LoginActivity)
         return bdd.usuarioDao.getNombre(user)
+    }
+
+    private fun crearNotificationManager(): NotificationManager? {
+        val auxMyNotifyMgr = getSystemService(NOTIFICATION_SERVICE) as NotificationManager;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && auxMyNotifyMgr.getNotificationChannel(CHANNEL_ID) == null) {
+            auxMyNotifyMgr.createNotificationChannel(
+                NotificationChannel(CHANNEL_ID,"GameOfThrones", NotificationManager.IMPORTANCE_DEFAULT
+            )
+            );
+        }
+        return auxMyNotifyMgr
     }
 }
