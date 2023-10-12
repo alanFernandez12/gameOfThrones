@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.trabajoIntegrador.gameOfThrones.HouseAtribute
 import com.trabajoIntegrador.gameOfThrones.R
 
-class HouseAdapter(private val houselist:List<HouseAtribute>) : RecyclerView.Adapter<HouseViewHolder>() {
+class HouseAdapter(private val houselist: List<HouseAtribute>) :
+    RecyclerView.Adapter<HouseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HouseViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return HouseViewHolder(layoutInflater.inflate(R.layout.item_house,parent,false))
+        return HouseViewHolder(layoutInflater.inflate(R.layout.item_house, parent, false))
 
 
     }

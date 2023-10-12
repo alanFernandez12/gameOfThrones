@@ -2,8 +2,6 @@ package com.trabajoIntegrador.gameOfThrones
 
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -11,6 +9,7 @@ import android.view.MenuItem
 import android.widget.EditText
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.LifecycleCoroutineScope
@@ -145,20 +144,22 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.item_cerrarSesion) {
 
-            var preferencias = getSharedPreferences(resources.getString((R.string.sp_credenciales)), MODE_PRIVATE)
+            var preferencias =
+                getSharedPreferences(resources.getString((R.string.sp_credenciales)), MODE_PRIVATE)
             preferencias.edit().putString(resources.getString(R.string.nombre_usuario), "").apply()
-            preferencias.edit().putString(resources.getString(R.string.password_usuario), "").apply()
-            var intentLogin= Intent(this,LoginActivity::class.java)
+            preferencias.edit().putString(resources.getString(R.string.password_usuario), "")
+                .apply()
+            var intentLogin = Intent(this, LoginActivity::class.java)
             startActivity(intentLogin)
             finish()
         }
-        if(item.itemId== R.id.item_libro){
-            var intentBook= Intent(this,BooksActivity::class.java)
+        if (item.itemId == R.id.item_libro) {
+            var intentBook = Intent(this, BooksActivity::class.java)
             startActivity(intentBook)
             finish()
         }
-        if(item.itemId==R.id.item_house){
-            var intentHouse= Intent(this,HouseActivity::class.java)
+        if (item.itemId == R.id.item_house) {
+            var intentHouse = Intent(this, HouseActivity::class.java)
             startActivity(intentHouse)
             finish()
 
