@@ -1,6 +1,7 @@
 package com.trabajoIntegrador.gameOfThrones.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,14 +11,14 @@ import com.trabajoIntegrador.gameOfThrones.PersonajeActivity
 import com.trabajoIntegrador.gameOfThrones.R
 
 class PersonajeAdapter(
-    private var personajeList: List<Personaje>,
-    private val onClickListener: (Personaje) -> Unit
+    private var personajeList: List<Personaje>
 ) : RecyclerView.Adapter<PersonajeHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonajeHolder {
+        Log.d("debug","entrando oncreateviewholder")
         val layaoutInFlater = LayoutInflater.from(parent.context)
         return PersonajeHolder(layaoutInFlater.inflate(R.layout.item_personaje, parent, false))
-
+        Log.d("debug","despues del return oncreateviewholder")
     }
 
     override fun getItemCount(): Int {
@@ -26,6 +27,7 @@ class PersonajeAdapter(
 
     override fun onBindViewHolder(holder: PersonajeHolder, position: Int) {
         val item = personajeList[position]
+        Log.d("debug","despues item=personaleslist")
         holder.render(item)
         val activity = holder.itemView.context
         holder.itemView.setOnClickListener {
