@@ -18,9 +18,9 @@ class PersonajeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_personaje)
         val nomPer = bundle?.getString("Nombre") // obtengo los datos extras
 
-        val i = personajels.indexOfFirst { it.nombre == nomPer }// busco el dato extra en la lista
+        val i = personajels.indexOfFirst { it.firstName == nomPer }// busco el dato extra en la lista
         if (i != -1) {
-            val image = personajels[i].imagen
+            val image = personajels[i].imageUrl
             im = findViewById(R.id.IvPersonaje)
 
             Glide.with(im.context).load(image).into(im)// cargo la irl de la foto

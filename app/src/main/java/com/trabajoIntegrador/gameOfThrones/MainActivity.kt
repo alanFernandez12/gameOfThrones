@@ -3,53 +3,76 @@ package com.trabajoIntegrador.gameOfThrones
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.trabajoIntegrador.gameOfThrones.adapter.PersonajeAdapter
 import com.trabajoIntegrador.gameOfThrones.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Response
+import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity() {
+
+    //Variables
+    private lateinit var filtro: EditText
     lateinit var toolbar: Toolbar
-    private lateinit var binding: ActivityMainBinding // simplificando el llamado a la vista
-
-    private var personajeMutableList: MutableList<Personaje> =
-        PersonajesProvider.personajeList.toMutableList() // lista mutable para el filtrado de busqueda
-
-
+    private  var personajeList: MutableList<Personaje> = mutableListOf()
     private lateinit var adapter: PersonajeAdapter
-
+    /////////
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        //// rutinar para poder usar el binding e iniciar el layaout
-        binding = ActivityMainBinding.inflate(layoutInflater)
 
-        setContentView(binding.root)
 
+
+        setContentView(R.layout.activity_main)
+
+        Log.d("debug","antes de la api")
+
+        //comienza API
+        initApi()
 
         //filtrado de personajes por sus atributos
-        binding.scFilter.addTextChangedListener { userFilter ->
+        filtro=findViewById(R.id.scFilter)
+
+
+
+        filtro.addTextChangedListener { userFilter ->
             val searchText = userFilter.toString().lowercase()
 
-            val personajeFiltrado = personajeMutableList.filter { personaje ->
-                personaje.nombre.lowercase().contains(searchText) ||
-                        personaje.apellido.lowercase().contains(searchText) ||
-                        personaje.familia.lowercase().contains(searchText) ||
-                        personaje.titulo.lowercase().contains(searchText)
+            val personajeFiltrado = personajeList.filter { personaje ->
+                personaje.firstName.lowercase().contains(searchText) ||
+                        personaje.lastName.lowercase().contains(searchText) ||
+                        personaje.family.lowercase().contains(searchText) ||
+                        personaje.title.lowercase().contains(searchText)
 
             }
 
             adapter.updatePersonaje(personajeFiltrado)
         }
 
-        initRecyclerView()
 
+
+        Log.d("debug","antes del recycler")
+
+        Log.d("debug","despues del recycler")
         //toolbar
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -57,19 +80,59 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+
+    private fun initApi() {
+        val api = RetrofitClient.retrofit.create(MyApi::class.java)
+        val callGetCharacter = api.getCharacters()
+
+        callGetCharacter.enqueue(object : retrofit2.Callback<List<Personaje>> {
+
+            override fun onResponse(
+                call: Call<List<Personaje>>,
+                response: Response<List<Personaje>>
+            ){
+                Log.d("debug", "variables del onResponse")
+                val personajes = response.body()
+                Log.d("debug", "despues de la val ${personajes?.get(1)?.lastName}")
+                if (personajes != null) {
+
+                    personajeList.addAll(personajes)
+
+                    Log.d("Error", "entrando al if de personajes")
+
+                    initRecyclerView()
+
+                } else {
+                    Log.d("debug", "personajes nulos")
+                }
+
+
+            }
+
+            override fun onFailure(call: Call<List<Personaje>>, t: Throwable) {
+                Log.e("error", "error al llamar a la api")
+            }
+
+
+        })
+
+    }
+
     private fun initRecyclerView() {
-        adapter = PersonajeAdapter(personajeMutableList) { personaje ->
-            onItemSelected(personaje)
+        val recyclerView= findViewById<RecyclerView>(R.id.recyclerMain)
+        adapter = PersonajeAdapter(personajeList)
 
-        }
+        recyclerView.layoutManager= LinearLayoutManager(this)
+        recyclerView.adapter=adapter
 
-        binding.recyclerMain.layoutManager = LinearLayoutManager(this)
-        binding.recyclerMain.adapter = adapter
+
+        Log.d("debug","despues inflar el recycler")
 
     }
 
     fun onItemSelected(personaje: Personaje) {
-        Toast.makeText(this, personaje.nombre, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, personaje.firstName, Toast.LENGTH_SHORT).show()
 
     }
 
@@ -110,5 +173,7 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
 }
