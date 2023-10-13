@@ -179,12 +179,11 @@ class LoginActivity : AppCompatActivity() {
             getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
-
         val notificacion = NotificationCompat.Builder(this, CHANNEL_ID).also {
             it.setContentTitle("Game Of Thrones Notificacion")
             it.setContentText("Usuario recordado")
             it.setSmallIcon(android.R.mipmap.sym_def_app_icon)
-            it.priority = NotificationCompat.PRIORITY_HIGH
+            it.priority = NotificationCompat.PRIORITY_DEFAULT
             it.setContentIntent(resultPendingIntent)
             it.setVibrate(longArrayOf(1000, 500, 1000, 500, 1000))
             it.setAutoCancel(true)
