@@ -1,6 +1,11 @@
 package com.trabajoIntegrador.gameOfThrones
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -11,6 +16,12 @@ import com.trabajoIntegrador.gameOfThrones.datos.AppDatabase
 import com.trabajoIntegrador.gameOfThrones.datos.Usuario
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import android.Manifest
+import android.app.TaskStackBuilder
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 
 class LoginActivity : AppCompatActivity() {
     ////// --- Elementos de la vista //////
@@ -21,9 +32,16 @@ class LoginActivity : AppCompatActivity() {
     lateinit var cbRecordarUsuario: CheckBox
     //////////////////////////////////////
 
+    ////// --- elementos para configurar las notificaciones //////
+    private val canalNombre = "Game Of Thrones"
+    private val CHANNEL_ID = "IdChannel"
+    private val NOTIFICATION_ID = 12345
+
     ////// --- Elementos del entorno de ejecucion //////
     lateinit var usuario: String
     lateinit var password: String
+    ////////
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -42,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
             preferencias.getString(resources.getString(R.string.nombre_usuario), "")
         val passwordGuardado =
             preferencias.getString(resources.getString(R.string.password_usuario), "")
+
 
         // si existen datos guardados del usuario accedemos al sistema sin pedir contraseña
         Toast.makeText(this, "Usuario guardado: " + usuarioGuardado, Toast.LENGTH_SHORT).show()
@@ -94,8 +113,18 @@ class LoginActivity : AppCompatActivity() {
                                 password
                             )
                             editar.apply()
-                            Toast.makeText(this, "recordar Usuario: "+ preferencias.getString(resources.getString(R.string.nombre_usuario), ""), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this,
+                                "recordar Usuario: " + preferencias.getString(
+                                    resources.getString(R.string.nombre_usuario),
+                                    ""
+                                ),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            crearCanalNotificacion()
+                            crearNotificacion()
                         }
+
 
                         val intentMainActivity = Intent(this, MainActivity::class.java)
                         startActivity(intentMainActivity)
@@ -125,8 +154,50 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun registrarIngreso(user: String): Usuario {
-        // 1. chequear si el usuario ya existe en base de datos
+        // chequear si el usuario ya existe en base de datos
         val bdd = AppDatabase.getDatabase(this@LoginActivity)
         return bdd.usuarioDao.getNombre(user)
+    }
+
+    private fun crearCanalNotificacion() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val canalImportancia = NotificationManager.IMPORTANCE_HIGH
+            val canal = NotificationChannel(this.CHANNEL_ID, canalNombre, canalImportancia)
+
+            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(canal)
+
+        }
+    }
+
+    private fun crearNotificacion() {
+
+        val resultIntent = Intent(applicationContext, MainActivity::class.java)
+        val resultPendingIntent = TaskStackBuilder.create(applicationContext).run {
+
+            addNextIntentWithParentStack(resultIntent)
+            getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+
+        val notificacion = NotificationCompat.Builder(this, CHANNEL_ID).also {
+            it.setContentTitle("Game Of Thrones Notificacion")
+            it.setContentText("Usuario recordado")
+            it.setSmallIcon(android.R.mipmap.sym_def_app_icon)
+            it.priority = NotificationCompat.PRIORITY_DEFAULT
+            it.setContentIntent(resultPendingIntent)
+            it.setVibrate(longArrayOf(1000, 500, 1000, 500, 1000))
+            it.setAutoCancel(true)
+        }.build()
+
+        val notificationManager = NotificationManagerCompat.from(this)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            return
+        }
+        notificationManager.notify(NOTIFICATION_ID, notificacion)
     }
 }
