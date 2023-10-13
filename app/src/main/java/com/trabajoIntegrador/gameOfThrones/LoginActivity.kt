@@ -121,9 +121,10 @@ class LoginActivity : AppCompatActivity() {
                                 ),
                                 Toast.LENGTH_SHORT
                             ).show()
+                            crearCanalNotificacion()
+                            crearNotificacion()
                         }
-                        crearCanalNotificacion()
-                        crearNotificacion()
+
 
                         val intentMainActivity = Intent(this, MainActivity::class.java)
                         startActivity(intentMainActivity)
@@ -181,7 +182,7 @@ class LoginActivity : AppCompatActivity() {
 
         val notificacion = NotificationCompat.Builder(this, CHANNEL_ID).also {
             it.setContentTitle("Game Of Thrones Notificacion")
-            it.setContentText("Esta es una notificacion muy importante")
+            it.setContentText("Usuario recordado")
             it.setSmallIcon(android.R.mipmap.sym_def_app_icon)
             it.priority = NotificationCompat.PRIORITY_HIGH
             it.setContentIntent(resultPendingIntent)
