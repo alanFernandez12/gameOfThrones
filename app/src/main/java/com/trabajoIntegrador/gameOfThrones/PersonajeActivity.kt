@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 class PersonajeActivity : AppCompatActivity() {
 
     lateinit var im: ImageView
-    var personajels: List<Personaje> = PersonajesProvider.personajeList // lista con personajes
+    //var personajels: List<Personaje> = PersonajesProvider.personajeList // lista con personajes
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,15 +16,16 @@ class PersonajeActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personaje)
-        val nomPer = bundle?.getString("Nombre") // obtengo los datos extras
 
-        val i = personajels.indexOfFirst { it.firstName == nomPer }// busco el dato extra en la lista
+        val foto = bundle?.getString("img") // obtengo los datos extras
+
+       /* val i = personajels.indexOfFirst { it.firstName == nomPer }// busco el dato extra en la lista
         if (i != -1) {
-            val image = personajels[i].imageUrl
-            im = findViewById(R.id.IvPersonaje)
+            val image = personajels[i].imageUrl*/
+            im= findViewById(R.id.IvPersonaje)
 
-            Glide.with(im.context).load(image).into(im)// cargo la irl de la foto
+            Glide.with(im.context).load(foto).into(im)// cargo la irl de la foto
 
         }
-    }
+
 }
