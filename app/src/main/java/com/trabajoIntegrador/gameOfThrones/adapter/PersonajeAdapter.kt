@@ -34,7 +34,7 @@ class PersonajeAdapter(
             Toast.makeText(holder.itemView.context, item.firstName, Toast.LENGTH_SHORT).show()
 
             val intentPersonaje = Intent(it.context, PersonajeActivity::class.java)
-            intentPersonaje.putExtra("Nombre", item.firstName.toString())
+            intentPersonaje.putExtra("img", item.imageUrl)
             activity.startActivity(intentPersonaje)
 
         }
